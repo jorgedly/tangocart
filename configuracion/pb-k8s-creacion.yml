@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  vars:
+    ansible_python_interpreter: /usr/bin/python3.7
+  collections:
+    - kubernetes.core
+  tasks:
+  - name: Deployment y servicio de producto
+    k8s:
+      state: present
+      namespace: default
+      src: dproducto.yml
+  - name: Deployment y servicio de usuario
+    k8s:
+      state: present
+      namespace: default
+      src: dusuario.yml
+  - name: Deployment y servicio de servicio
+    k8s:
+      state: present
+      namespace: default
+      src: dservicio.yml
+  - name: Deployment y servicio de plantilla
+    k8s:
+      state: present
+      namespace: default
+      src: dplantilla.yml
+  - name: Crear ingress
+    k8s:
+      state: present
+      namespace: default
+      src: ingress-completo.yml

@@ -1,0 +1,94 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+        </div>
+
+        <div id="app">
+          <!-- Header -->
+          <header class="container">
+            <h1>Carrito de compras</h1>
+            <span class="count" *ngIf="carritoVacio">{{arregloCarrito.length}} productos en el carrito</span>
+          </header>
+          <!-- End Header -->
+
+          <!-- Product List -->
+          <section class="container">
+            <div *ngIf="carritoVacio"> 
+              <ul class="products">
+                <li class="row" *ngFor="let item of arregloCarrito; index as i;"> 
+                  <div class="col left">
+                    <div class="thumbnail">
+                      <a href="#">
+                        <img src='{{item.foto}}' alt="nombre" />
+                      </a>
+                    </div>
+                    <div class="detail">
+                      <div class="name"><a href="#">{{item.nombre}}</a></div>
+                      <div class="price">Q{{item.precio}}</div>
+                    </div>
+                  </div>
+
+                  <div class="col right">
+                    <div class="quantity">
+                      <input type="number" id="quantity-{{i}}" class="quantity" step="1" value="{{item.cantidad}}" (change)="actualizarCantidad(i)" />
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div *ngIf="!carritoVacio">
+              <h3>Su carrito esta vacio :(</h3>
+            </div>
+          </section>
+          <!-- End Product List -->
+
+          <!-- Summary -->
+          <section class="container" *ngIf="carritoVacio">
+            <div class="promotion">
+              <h3>Datos de facturacion</h3>
+              <!-- <label for="direccion">Direccion</label>
+              <input type="text" id="direccion" [(ngModel)]="pedido.direccion"/>
+
+              <label for="departamento">Departamento</label>
+              <input type="text" id="departamento" [(ngModel)]="pedido.departamento"/>
+
+              <label for="codigopostal">Codigo postal</label>
+              <input type="number" id="codigopostal" [(ngModel)]="pedido.codigoPostal"/>
+
+              <label for="numero">Numero de tarjeta</label>
+              <input type="text" id="numero" [(ngModel)]="pedido.numeroTarjeta"/>
+
+              <label for="fecha">Fecha de vencimiento</label>
+              <input type="text" id="fecha" [(ngModel)]="pedido.fechaVencimiento"/> -->
+
+              <label for="nit">NIT</label>
+              <input type="number" id="ccv" [(ngModel)]="pedido.nit"/>
+
+            </div>
+
+            <div class="summary">
+              <ul>
+                <li class="total">Total <span>{{ pedido.total }}</span></li>
+              </ul>
+            </div>
+
+            <div class="checkout">
+              <button type="button" (click)="comprar()">Continuar</button>
+              <button type="button" class="bg-danger border-0 ml-3" (click)="limpiarCarrito()">Limpiar</button>
+            </div>
+          </section>
+          <!-- End Summary -->
+        </div>
+        <br/>
+      </div>
+    </div>
+  </div>
+</div>

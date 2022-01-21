@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: susuario
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: dusuario
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dusuario
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dusuario
+  template:
+    metadata:
+      labels:
+        app: dusuario
+    spec:
+      containers:
+      - name: usuario
+        image: jorgedly/usuario:latest
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Always

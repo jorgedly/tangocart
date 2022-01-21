@@ -1,0 +1,144 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      
+      <div class="row">
+        <div class="col-lg-4">
+          <h1 class="display-2 text-white">Administracion de categorias</h1>
+          <p class="text-white mt-0 mb-5">Aca puede agregar, editar y eliminar categorias</p>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="card bg-secondary shadow border-0" style="margin-bottom:10px">
+            <div class="card-body px-lg-5 py-lg-5">
+              <div class="text-center text-muted mb-4">
+                <small>Agregar Categoria</small>
+              </div>
+    
+              <form role="form" #form_genero = "ngForm" (ngSubmit) = "crearGenero(form_genero.value); form_genero.resetForm()">
+                <div class="form-group">
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-book-bookmark"></i></span>
+                    </div>
+                    <input class="form-control" name="nombre" placeholder="Nombre de la categoria" type="text" ngModel>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-book-bookmark"></i></span>
+                    </div>
+                    <input class="form-control" name="descripcion" placeholder="Descripcion de la categoria" type="text" ngModel>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary mt-4">Crear Categoria</button>
+                </div>
+              </form>
+        
+          </div>
+        
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+
+  <div class="row mt-5">
+
+    <div class="col-xl-7 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="mb-0">Categorias Disponibles</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          
+          <!-- Tabla -->
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr *ngFor="let genero of listaGeneros">
+                <td> {{genero.nombre}} </td>
+                <td> {{genero.descripcion}} </td>
+                <button type="button" class="btn btn-outline-info" (click)="editar(genero)">Editar</button>
+                <button type="button" class="btn btn-outline-warning" (click)="eliminar(genero.id)">Eliminar</button>
+              </tr>
+              
+            </tbody>
+          </table>
+          <!-- Tabla -->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-5">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="mb-0">Editar Categoria</h3>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+
+          <!-- Tabla -->
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Atributo</th>
+                <th scope="col">Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <th scope="row">Nombre</th>
+                <td>
+                    <input #inputNombre [(ngModel)]="nombre" type="text" class="card-text">
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Descripcion</th>
+                <td>
+                    <input #inputDescripcion [(ngModel)]="descripcion" type="text" class="card-text">
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row"></th>
+                <td rowspan="2">
+                  <button type="button" class="btn btn-success" (click)="guardar(id_seleccionado,inputNombre.value,inputDescripcion.value)">Guardar</button>
+                </td>
+              </tr>
+
+              
+            </tbody>
+          </table>
+          <!-- Tabla -->
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

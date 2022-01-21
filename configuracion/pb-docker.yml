@@ -1,0 +1,54 @@
+---
+- hosts: localhost
+  become: yes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3.7
+  tasks:
+  - name: Construir y subir a docker hub producto
+    docker_image:
+      state: present
+      build:
+        path: ../backend/producto
+        pull: yes
+      name: jorgedly/producto
+      repository: jorgedly/producto
+      source: build
+      tag: latest
+      push: yes
+      force_source: true
+  - name: Construir y subir a docker hub usuario
+    docker_image:
+      state: present
+      build:
+        path: ../backend/usuario
+        pull: yes
+      name: jorgedly/usuario
+      repository: jorgedly/usuario
+      source: build
+      tag: latest
+      push: yes
+      force_source: true
+  - name: Construir y subir a docker hub servicio
+    docker_image:
+      state: present
+      build:
+        path: ../backend/servicio
+        pull: yes
+      name: jorgedly/servicio
+      repository: jorgedly/servicio
+      source: build
+      tag: latest
+      push: yes
+      force_source: true
+  - name: Construir y subir a docker hub plantilla
+    docker_image:
+      state: present
+      build:
+        path: ../backend/plantilla
+        pull: yes
+      name: jorgedly/plantilla
+      repository: jorgedly/plantilla
+      source: build
+      tag: latest
+      push: yes
+      force_source: true

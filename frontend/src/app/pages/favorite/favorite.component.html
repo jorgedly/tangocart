@@ -1,0 +1,45 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+    style="min-height: 600px; background-image: url(assets/img/theme/library.jpg); background-size: cover; background-position: center top;">
+    <!-- Mask -->
+    <span class="mask bg-gradient-danger opacity-8"></span>
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+            <div class="col-lg-7 col-md-10">
+                <h1 class="display-2 text-white">Favoritos</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col-xl-12 order-xl-1">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Tango Cart</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="child-page-listing">
+                        <div class="grid-container">
+                            <article id="3685" class="location-listing" *ngFor="let arr of productos; let i=index">
+                                <a class="location-title" (click)="seleccionarLibro(arr)">
+                                    {{arr.nombre}} </a>
+                                <div class="location-image">
+                                    <a href="#">
+                                        <img width="400" height="400"
+                                            src="{{arr.imagen}}"> </a>
+                                </div>
+                            </article>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

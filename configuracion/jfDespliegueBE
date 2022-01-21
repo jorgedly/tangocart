@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Ansible: Crear imagenes y despliegues de Kubernetes') {
+            steps {
+                sh '''cd configuracion
+                ansible-playbook pb-docker.yml
+                ansible-playbook pb-k8s-eliminacion.yml
+                ansible-playbook pb-k8s-creacion.yml'''
+            }
+        }
+    }
+}

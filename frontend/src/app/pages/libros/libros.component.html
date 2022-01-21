@@ -1,0 +1,72 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Productos en existencia</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Nombre</th>
+                <!-- <th scope="col">Autor</th> -->
+                <th scope="col">Precio</th>
+                <!-- <th scope="col">Año</th> -->
+                <th scope="col">stock</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let arr of arregloLibros; let i=index">
+                <th scope="row">
+                  <div class="media align-items-center">
+                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                      <img alt=":)" src="{{arr.foto}}">
+                    </a>
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">{{arr.nombre}}</span>
+                    </div>
+                  </div>
+                </th>
+                <td>
+                  Q {{arr.precio}}
+                </td>
+                <td>
+                  {{arr.stock}}
+                </td>
+                <td class="text-right">
+                  <button class="btn btn-icon btn-2 btn-success btn-sm" type="button" (click)="editar(arr)">
+                    <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
+                  </button>
+                  <button class="btn btn-icon btn-2 btn-danger btn-sm" type="button" (click)="eliminar(arr)">
+                    <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item active">
+                <button class="btn btn-icon btn-2 btn-primary btn-sm" type="button" (click)="crear()">
+                    <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+---
+- hosts: localhost
+  vars:
+    ansible_python_interpreter: /usr/bin/python3.7
+  collections:
+    - kubernetes.core
+  tasks:
+  - name: Eliminando deployment dproducto
+    k8s:
+      state: absent
+      api_version: apps/v1
+      kind: Deployment
+      namespace: default
+      name: dproducto
+  - name: Eliminando deployment dusuario
+    k8s:
+      state: absent
+      api_version: apps/v1
+      kind: Deployment
+      namespace: default
+      name: dusuario
+  - name: Eliminando deployment dservicio
+    k8s:
+      state: absent
+      api_version: apps/v1
+      kind: Deployment
+      namespace: default
+      name: dservicio
+  - name: Eliminando deployment dplantilla
+    k8s:
+      state: absent
+      api_version: apps/v1
+      kind: Deployment
+      namespace: default
+      name: dplantilla

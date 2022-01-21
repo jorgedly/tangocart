@@ -1,0 +1,62 @@
+<div class="card" style="width: 100%">
+    <img class="card-img-top" src="{{libro.foto}}" alt="Card image cap"
+        style="width: 20%; display: block; margin-left: auto; margin-right: auto;">
+    <div class="card-body">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="libro.nombre">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Precio</mat-label>
+            <input matInput [(ngModel)]="libro.precio">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>stock</mat-label>
+            <input matInput [(ngModel)]="libro.stock">
+        </mat-form-field>
+        <!-- <mat-form-field class="example-full-width">
+            <mat-label>Fecha fin de subasta</mat-label>
+            <input matInput type="datetime-local" class="form-control"  [(ngModel)]="libro.timepoFinSubasta"/>
+        </mat-form-field> -->
+
+        <!-- <h4>Categorias:</h4>
+        <div *ngFor="let data of arreglocategorias; let i=index">
+            <mat-checkbox [(ngModel)]="data.seleccionado">
+              {{data.nombre}}
+            </mat-checkbox>
+        </div>  -->
+
+        <br/>
+        <!-- <button class="btn btn-icon btn-2 btn-danger btn-sm" type="button" (click)="terminarPuja()" >
+            Terminar Puja
+        </button> -->
+        <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+            <div class="form-group">
+                <label>Seleccione una foto para subir</label>
+                <input type="file" accept="image/*" class="form-control" formControlName="imageUrl" (change)="showPreview($event)">
+                <!-- <input type="text" class="form-control" formControlName="imageUrl" (change)="showPreview($event)"> -->
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Subir</button>
+            </div>
+        </form>
+        <div class="card-footer py-4">
+            <nav aria-label="...">
+                <ul class="pagination justify-content-end mb-0">
+                    <li class="page-item active">
+                        <button class="btn btn-icon btn-2 btn-success btn-sm" type="button" (click)="crear()" *ngIf="booleanCrear">
+                            <span class="btn-inner--icon"><i class="fas fa-check"></i></span>
+                        </button>
+                        <button class="btn btn-icon btn-2 btn-success btn-sm" type="button" (click)="editar()" *ngIf="!booleanCrear">
+                            <span class="btn-inner--icon"><i class="fas fa-check"></i></span>
+                        </button>
+                        <button class="btn btn-icon btn-2 btn-danger btn-sm" type="button" (click)="cancelar()" >
+                            <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="card" style="width: 100;">
+    <div class="card-body">
+        <h5 class="card-title">Detalle del Producto</h5>
+        <div class="container">
+            <div class="image">
+              <img  src="{{libro.foto}}" width="70%">
+            </div>
+            <div class="text">
+                <h1>{{libro.nombre}}</h1>
+                    <div *ngIf="isParaSubastar; else elseBlock">
+                        <div>
+                            Mejorar oferta: Q{{libro.precio}}
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Pujar</mat-label>
+                                <input matInput [(ngModel)]="puja">
+                            </mat-form-field>
+                            <button class="btn btn-icon btn-2 btn-success" type="button" (click)="pujar()">
+                                <span class="btn-inner--icon"><i class="ni ni-bold-up"></i></span>
+                              </button>
+                        </div>
+                    </div>
+                    <ng-template #elseBlock>
+                        <p>
+                            <b>Precio:</b> Q{{libro.precio}}<br/>
+                            <b>Cantidad en existencia:</b> {{libro.stock}}
+                        </p>
+                    </ng-template>
+            </div>
+          </div>
+          <div class="card-footer py-4">
+            <nav aria-label="...">
+
+                <ul class="pagination justify-content-end mb-0">
+                    <li class="page-item active">
+                        <button class="btn btn-icon btn-2 btn-success" type="button" (click)="agregar()">
+                            <span class="btn-inner--icon"><i class="ni ni-basket"></i></span>
+                          </button>
+                    </li>
+                    <li class="page-item active">
+                        <p style="background:transparent; border:none; color:transparent;" ></p>
+
+                    </li>
+                    <li class="page-item active">
+                        <button class="btn btn-icon btn-2 mx-3  btn-warning" type="button" (click)="addFavorite()">
+                            <span class="btn-inner--icon"><i class="fas fa-star"></i></span>
+                          </button>
+                    </li>
+                    <li class="page-item active">
+                        <button class="btn btn-icon btn-2 btn-danger" type="button" (click)="cancelar()">
+                            <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+                          </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

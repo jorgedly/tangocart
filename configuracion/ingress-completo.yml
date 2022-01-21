@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-completo
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: www.tangocart-api.ml
+    http:
+      paths:
+      - pathType: Prefix
+        path: /usuario
+        backend:
+          service:
+            name: susuario
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /producto
+        backend:
+          service:
+            name: sproducto
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /servicio
+        backend:
+          service:
+            name: sservicio
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /plantilla
+        backend:
+          service:
+            name: splantilla
+            port:
+              number: 80

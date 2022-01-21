@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: splantilla
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 5000
+  selector:
+    app: dplantilla
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dplantilla
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dplantilla
+  template:
+    metadata:
+      labels:
+        app: dplantilla
+    spec:
+      containers:
+      - name: plantilla
+        image: jorgedly/plantilla:latest
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: Always

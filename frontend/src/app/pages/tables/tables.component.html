@@ -1,0 +1,49 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+
+  <!-- Table -->
+  <div class="row"> 
+    <div class="row mt-5">
+      <div class="col">
+        <div class="card bg-default shadow">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="text-white mb-0" *ngIf="listaUsuariosE.length > 0">Empresas pendientes de aprobacion</h3>
+            <h3 class="text-white mb-0" *ngIf="listaUsuariosE.length <= 0">No hay empresas pendientes de aprobacion</h3>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table align-items-center table-dark table-flush">
+              
+              <thead class="thead-dark" *ngIf="listaUsuariosE.length > 0">
+                <tr>
+                  <th scope="col">Nombre Empresa</th>
+                  <th scope="col">Activo</th>
+                  <th scope="col" style="width:110px;">Accion</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let usuario of listaUsuariosE">
+                  <td> {{usuario.nombre}} </td>
+                  <td> {{usuario.activo}} </td>
+                  <button type="button" class="btn btn-outline-success" (click)="aprobarEditorial(usuario)">Aprobar</button>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

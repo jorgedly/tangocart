@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Compilacion de angular') {
+            steps {
+                sh '''cd frontend
+                #npm install
+                ng build --configuration production --base-href "http://www.tangocart.ml"'''
+            }
+        }
+        stage('Despliegue de angular') {
+            steps {
+                sh '''cd /bitnami/jenkins/home/workspace
+                cd pagina
+                cp -a /bitnami/jenkins/home/workspace/pipeline_completo/frontend/dist/. /bitnami/jenkins/home/workspace/pagina/
+                echo "www.tangocart.ml" > CNAME
+                echo pagina-"`date +"%d-%m-%Y--%T"`" > hola.txt
+                git add .
+                git commit -m "Pagina"
+                git push origin master'''
+            }
+        }
+    }
+}

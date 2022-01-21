@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sproducto
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: dproducto
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dproducto
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dproducto
+  template:
+    metadata:
+      labels:
+        app: dproducto
+    spec:
+      containers:
+      - name: producto
+        image: jorgedly/producto:latest
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Always

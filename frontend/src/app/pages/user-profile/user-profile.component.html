@@ -1,0 +1,192 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-size: cover; background-position: center top;">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-4">
+        <h1 class="display-2 text-white">Bienvenido Admin</h1>
+        <p class="text-white mt-0 mb-5">Aca puede agregar usuarios administradores, eliminar usuarios proveedores y usuarios clientes</p>
+      </div>
+
+      <div class="col-lg-7">
+      <div class="card bg-secondary shadow border-0" style="margin-bottom:10px">
+        <div class="card-body px-lg-5 py-lg-5">
+          <div class="text-center text-muted mb-4">
+            <small>Registrar Administrador</small>
+          </div>
+
+          <form role="form" #administrador = "ngForm" (ngSubmit) = "crearAdmin(administrador.value)">
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-book-bookmark"></i></span>
+                </div>
+                <input class="form-control" name="username" placeholder="Nombre de Usuario" type="text" ngModel>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                </div>
+                <input class="form-control" name="password" placeholder="Password" type="password" ngModel>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-pin-3"></i></span>
+                </div>
+                <input class="form-control" name="nombre" placeholder="Nombre Completo" type="text" ngModel>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-pin-3"></i></span>
+                </div>
+                <input class="form-control" name="numero" placeholder="Telefono" type="text" ngModel>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                </div>
+                <input class="form-control" name="email" placeholder="Correo" type="text" ngModel>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary mt-4">Crear Administrador</button>
+            </div>
+          </form>
+    
+      </div>
+    
+      </div>
+      </div>
+
+    </div>
+
+  </div>
+  
+</div>
+
+<div class="container-fluid mt--7">
+  
+  <!-- Table -->
+  <div class="row"> 
+      <div class="row mt-5">
+        <div class="col">
+          <div class="card bg-default shadow">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="text-white mb-0">Usuarios Empresas</h3>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table align-items-center table-dark table-flush">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Nombre Empresa</th>
+                    <th scope="col">Activo</th>
+                    <th scope="col" style="width:110px;">Accion</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor="let usuario of listaUsuariosE">
+                    <td> {{usuario.nombre}} </td>
+                    <td> {{usuario.activo}} </td>
+                    <button type="button" class="btn btn-outline-warning" (click)="eliminarUsuario(usuario)">Eliminar</button>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- Table -->
+  <div class="row"> 
+    <div class="row mt-5">
+      <div class="col">
+        <div class="card bg-default shadow">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="text-white mb-0">Usuarios Clientes</h3>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table align-items-center table-dark table-flush">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Usuario</th>
+                  <th scope="col">Nombres</th>
+                  <th scope="col">Telefono</th>
+                  <th scope="col">Activo</th>
+                  <th scope="col" style="width:110px;">Accion</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let usuario of listaUsuariosC">
+                  <td> {{usuario.usuario}} </td>
+                  <td> {{usuario.nombres}} </td>
+                  <td> {{usuario.telefono}} </td>
+                  <td> {{usuario.activo}} </td>
+                  <button type="button" class="btn btn-outline-warning" (click)="eliminarUsuario(usuario)">Eliminar</button>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="row"> 
+    <div class="row mt-5">
+      <div class="col">
+        <div class="card bg-default shadow">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="text-white mb-0">Usuarios Administradores</h3>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table align-items-center table-dark table-flush">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Usuario</th>
+                  <th scope="col">Nombres</th>
+                  <th scope="col">Telefono</th>
+                  <th scope="col">Activo</th>
+                  <th scope="col" style="width:110px;">Accion</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let usuario of listaUsuariosA">
+                  <td> {{usuario.usuario}} </td>
+                  <td> {{usuario.nombres}} </td>
+                  <td> {{usuario.telefono}} </td>
+                  <td> {{usuario.activo}} </td>
+                  <button type="button" class="btn btn-outline-warning" (click)="eliminarUsuario(usuario)">Eliminar</button>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

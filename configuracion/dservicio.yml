@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sservicio
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 5000
+  selector:
+    app: dservicio
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dservicio
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dservicio
+  template:
+    metadata:
+      labels:
+        app: dservicio
+    spec:
+      containers:
+      - name: servicio
+        image: jorgedly/servicio:latest
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: Always

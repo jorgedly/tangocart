@@ -1,0 +1,22 @@
+{
+  "name": "nodeapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "servidor.js",
+  "scripts": {
+    "start": "node servidor.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.979.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "image-thumbnail": "^1.0.13",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "uuid": "^8.3.2"
+  }
+}
